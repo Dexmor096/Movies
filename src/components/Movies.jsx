@@ -13,7 +13,7 @@ function Movies(props) {
 
                 />
                 ))) :
-                <h4>Movies not found</h4>
+                <h4>Movie not found</h4>
             }
         </div>
     )
