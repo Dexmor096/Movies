@@ -1,50 +1,43 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-class Search extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    state = {
-        type: '',
-        value: ''
-    }
-    handleChange = (event) => {
-        this.setState({value: event.target.value})
-    }
-    radioChange = (event) => {
-        this.setState(
-            () => ({type: event.target.value}),
-            () => {this.props.searchFilm(this.state.value, this.state.type)})
-    };
-    handleSearch = (event) => {
+function Search(props) {
+    const {searchFilm} = props;
+const [type, setType] = useState('');
+const [value, setValue] = useState('');
+
+    const handleSearch = (event) => {
         if (event.key === "Enter") {
-            this.props.searchFilm(this.state.value, this.state.type)
+            searchFilm(value, type)
         }
     }
 
-    render() {
-        const {type} = this.state;
+    const radioChange = (event) => {
+        setType(event.target.value);
+        searchFilm(value, event.target.value)
+    }
+
+    const handleChange = (event) => {
+        setValue(event.target.value)
+    }
+
         return (
             <div className="row">
                 <div className="col s12">
                     <div className="input-field">
                         <input
-                            id="email_inline"
-                            type="email"
-                            className="validate"
+                            className="validate search-input"
                             id="search"
                             type="search"
-                            value={this.state.value}
-                            onKeyDown={this.handleSearch}
-                            onChange={this.handleChange}
+                            value={value}
+                            onKeyDown={handleSearch}
+                            onChange={handleChange}
                         />
                         <button
                             className="button btn right search-button"
-                            onClick={() => this.props.searchFilm(this.state.value, this.state.type)}
+                            onClick={() => searchFilm(value, type)}
 
                         >Search
                         </button>
-                        <label htmlFor="email_inline">Search</label>
                     </div>
                 </div>
                     <label>
@@ -52,7 +45,7 @@ class Search extends React.Component {
                             className="with-gap"
                             name="group1"
                             type="radio"
-                            onChange={this.radioChange}
+                            onChange={radioChange}
                             checked={type === ''}
                             value={''}
                         />
@@ -64,7 +57,7 @@ class Search extends React.Component {
                             name="group1"
                             type="radio"
                             checked={type === 'movie'}
-                            onChange={this.radioChange}
+                            onChange={radioChange}
                             value={"movie"}
                         />
                         <span>Movies only</span>
@@ -75,7 +68,7 @@ class Search extends React.Component {
                             name="group1"
                             type="radio"
                             checked={type === 'series'}
-                            onChange={this.radioChange}
+                            onChange={radioChange}
                             value={"series"}
                         />
                         <span>Serial only</span>
@@ -84,7 +77,6 @@ class Search extends React.Component {
 
 
         )
-    }
 }
 
 export default Search;

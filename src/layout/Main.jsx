@@ -3,6 +3,7 @@ import React from "react";
 import Movies from '../components/Movies';
 import Preloader from '../components/Preloader'
 import Search from '../components/Search';
+import SearchF from '../components/SearchF';
 
 class Main extends React.Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class Main extends React.Component {
         this.state = {
             movies: [],
             value: '',
-            Loading: 'true'
+            loading: 'true'
         }
     }
 
@@ -38,7 +39,7 @@ class Main extends React.Component {
     render() {
         const {movies, loading} = this.state;
         return <div>
-            <Search
+            <SearchF
                 searchFilm={this.searchFilm}
             />
             {

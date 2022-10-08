@@ -27,13 +27,14 @@ nav {
   height: 100%;
 }
  #search {
-  padding-left: 10rem;
   background-color: #fff !important;
+
 }
+
 .search-button {
   position: absolute;
   top: 0;
-  right: 10rem;
+  right: 0;
   cursor: pointer;
 }
 .radio-button {
