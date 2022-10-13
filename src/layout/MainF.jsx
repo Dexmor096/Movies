@@ -11,7 +11,7 @@ function MainF() {
 
     const searchFilm = (filmName, type) => {
         setLoading(true)
-        fetch(`https://www.omdbapi.com/?apikey=a4f876b3&s=${filmName}&page=1&type=${type}`)
+        fetch(`https://www.omdbapi.com/?apikey=a4f876b3&s=${filmName ? filmName: "marvel"}&page=1&type=${type}`)
             .then(response => response.json())
             .then((data) => {
                     setMovies(data.Search);
