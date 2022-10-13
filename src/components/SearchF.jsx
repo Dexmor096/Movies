@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 function Search(props) {
     const {searchFilm} = props;
 const [type, setType] = useState('');
-const [value, setValue] = useState('');
+const [value, setValue] = useState('Marvel');
 
     const handleSearch = (event) => {
         if (event.key === "Enter") {
